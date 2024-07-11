@@ -1,8 +1,4 @@
-{ config
-, lib
-, pkgs
-, ...
-}:{
+{
   imports = [
     ./sets.nix
     ./keys.nix
