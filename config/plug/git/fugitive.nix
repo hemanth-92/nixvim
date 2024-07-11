@@ -1,5 +1,3 @@
 {
-  programs.nixvim = {
-    plugins.fugitive.enable = true;
-  };
+  plugins.fugitive.enable = true;
 }

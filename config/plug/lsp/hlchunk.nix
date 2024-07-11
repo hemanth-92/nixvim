@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-programs.nixvim={
   extraPlugins = [
     (pkgs.vimUtils.buildVimPlugin {
       name = "hlchunk";
@@ -12,5 +11,4 @@ programs.nixvim={
       };
     })
   ];
-};
 }

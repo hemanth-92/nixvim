@@ -1,5 +1,4 @@
 {
-  programs.nixvim = {
     plugins.treesitter-textobjects = {
       enable = false;
       select = {
@@ -44,5 +43,4 @@
         swapPrevious = {"<leader>A" = "@parameter.outer";};
       };
     };
-  };
 }

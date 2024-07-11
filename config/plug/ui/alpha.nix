@@ -1,5 +1,4 @@
 {
-  programs.nixvim = {
     plugins.alpha = let
       nixFlake = [
         ""
@@ -75,5 +74,4 @@
             }
           ];
         };
-      };
     }

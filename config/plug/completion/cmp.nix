@@ -1,5 +1,4 @@
 {
-  programs.nixvim = {
     plugins = {
       cmp = {
         enable = true;
@@ -63,5 +62,4 @@
       cmp-nvim-lsp = {enable = true;}; # lsp
       cmp-path = {enable = true;}; # file system paths
     };
-  };
 }

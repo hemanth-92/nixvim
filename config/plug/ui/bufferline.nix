@@ -1,5 +1,4 @@
 {
-  programs.nixvim = {
     plugins.bufferline = {
       enable = true;
       separatorStyle = "thin";
@@ -83,5 +82,4 @@
         options.desc = "Delete non-pinned buffers";
       }
     ];
-  };
 }

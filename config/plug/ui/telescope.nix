@@ -1,5 +1,4 @@
 {
-  programs.nixvim = {
     plugins.telescope = {
       enable = true;
       highlightTheme = "catppuccin-mocha";
@@ -116,5 +115,4 @@
         };
       }
     ];
-  };
 }

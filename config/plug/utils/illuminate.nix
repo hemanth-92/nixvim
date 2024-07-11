@@ -1,5 +1,4 @@
 {
-  programs.nixvim = {
     plugins.illuminate = {
       enable = true;
       underCursor = false;
@@ -11,5 +10,4 @@
         "reason"
       ];
     };
-  };
 }

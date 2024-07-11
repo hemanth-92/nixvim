@@ -1,5 +1,4 @@
 {
-  programs.nixvim = {
     plugins.lspkind = {
       enable = true;
       extraOptions = {
@@ -7,5 +6,4 @@
         ellipsis_char = "...";
       };
     };
-  };
 }

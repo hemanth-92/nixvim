@@ -1,5 +1,4 @@
 {
-  programs.nixvim = {
     plugins.notify = {
       enable = true;
       backgroundColour = "#000000";
@@ -19,5 +18,4 @@
         options.desc = "Dismiss All Notifications";
       }
     ];
-  };
 }

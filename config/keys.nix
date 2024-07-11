@@ -1,105 +1,398 @@
-_:
-let
-  mkKeymap = mode: key: action: { inherit mode key action; };
-  mkKeymapWithOpts =
-    mode: key: action: opts:
-    (mkKeymap mode key action) // { options = opts; };
-in
 {
-  programs.nixvim.keymaps = [
-    # fix page up and page down so the cursor doesn't move
-    (mkKeymap "n" "<PageUp>" "<C-U>")
-    (mkKeymap "n" "<PageDown>" "<C-D>")
-    (mkKeymap "i" "<PageUp>" "<C-O><C-U>")
-    (mkKeymap "i" "<PageDown>" "<C-O><C-D>")
+  globals.mapleader = " ";
 
-    # ctrl-s to save
-    (mkKeymap "n" "<C-S>" ":w<CR>")
-    (mkKeymap "i" "<C-S>" "<C-O>:up<CR>")
-    (mkKeymap "v" "<C-S>" "<C-C>:up<CR>")
+  keymaps = [
+    # General maps
+    {
+      mode = "n";
+      key = "<leader>f";
+      action = "+find/file";
+    }
 
-    # L to go to the end of the line
-    (mkKeymap "n" "L" "$")
+    {
+      mode = "n";
+      key = "<leader>s";
+      action = "+search";
+    }
 
-    # Y copies to end of line
-    (mkKeymap "n" "Y" "y$")
+    {
+      mode = "n";
+      key = "<leader>q";
+      action = "+quit/session";
+    }
 
-    # keep cursor in place when joining lines
-    (mkKeymap "n" "J" "mzJ`z")
+    {
+      mode = [ "n" "v" ];
+      key = "<leader>g";
+      action = "+git";
+    }
 
-    # visual shifting (does not exit visual mode)
-    (mkKeymap "v" "<" "<gv")
-    (mkKeymap "v" ">" ">gv")
+    {
+      mode = "n";
+      key = "<leader>u";
+      action = "+ui";
+    }
 
-    # copy and paste to clipboard
-    (mkKeymap "v" "<C-C>" ''"+y'')
-    (mkKeymap "n" "<C-V>" ''"+P'')
-    (mkKeymap "i" "<C-V>" ''<C-O>"+P'')
+    {
+      mode = "n";
+      key = "<leader>w";
+      action = "+windows";
+    }
 
-    # replace highlighted text when pasting
-    (mkKeymap "v" "<C-V>" ''"+P'')
+    {
+      mode = "n";
+      key = "<leader><Tab>";
+      action = "+tab";
+    }
 
-    # automatically jump to end of text pasted
-    (mkKeymapWithOpts "v" "y" "y`]" { silent = true; })
-    (mkKeymapWithOpts "v" "p" "p`]" { silent = true; })
-    (mkKeymapWithOpts "n" "p" "p`]" { silent = true; })
+    {
+      mode = [ "n" "v" ];
+      key = "<leader>d";
+      action = "+debug";
+    }
 
-    # reselect text
-    (mkKeymap "v" "gV" "`[v`]")
+    {
+      mode = [ "n" "v" ];
+      key = "<leader>c";
+      action = "+code";
+    }
 
-    # disable F1 key
-    (mkKeymap "n" "<F1>" "<Esc>")
-    (mkKeymap "i" "<F1>" "<Esc>")
-    (mkKeymap "v" "<F1>" "<Esc>")
+    {
+      mode = [ "n" "v" ];
+      key = "<leader>t";
+      action = "+test";
+    }
 
-    # TODO: disable manual key k?
+    # Tabs
+    {
+      mode = "n";
+      key = "<leader><tab><tab>";
+      action = "<cmd>tabnew<cr>";
+      options = {
+        silent = true;
+        desc = "New Tab";
+      };
+    }
 
-    # jk or kj to escape insert mode
-    (mkKeymap "i" "jk" "<Esc>")
-    (mkKeymap "i" "kj" "<Esc>")
+    {
+      mode = "n";
+      key = "<leader><tab>d";
+      action = "<cmd>tabclose<cr>";
+      options = {
+        silent = true;
+        desc = "Close tab";
+      };
+    }
 
-    # center display after searches
-    (mkKeymap "n" "n" "nzzzv")
-    (mkKeymap "n" "N" "Nzzzv")
-    (mkKeymap "n" "*" "*zzzv")
-    (mkKeymap "n" "#" "#zzzv")
-    (mkKeymap "n" "g*" "g*zzzv")
-    (mkKeymap "n" "g#" "g#zzzv")
+    # Windows
+    {
+      mode = "n";
+      key = "<leader>ww";
+      action = "<C-W>p";
+      options = {
+        silent = true;
+        desc = "Other window";
+      };
+    }
 
-    # only jumps of more than 5 lines are added to the jumplist
-    (mkKeymapWithOpts "n" "k" "(v:count > 5 ? \"m'\" . v:count : \"\") . 'k'" { expr = true; })
-    (mkKeymapWithOpts "n" "j" "(v:count > 5 ? \"m'\" . v:count : \"\") . 'j'" { expr = true; })
+    {
+      mode = "n";
+      key = "<leader>wd";
+      action = "<C-W>c";
+      options = {
+        silent = true;
+        desc = "Delete window";
+      };
+    }
 
-    # vv enter visual block mode
-    (mkKeymap "n" "vv" "<C-V>")
+    {
+      mode = "n";
+      key = "<leader>w-";
+      action = "<C-W>s";
+      options = {
+        silent = true;
+        desc = "Split window below";
+      };
+    }
 
-    # ; is an alias for :
-    (mkKeymap "n" ";" ":")
+    {
+      mode = "n";
+      key = "<leader>w|";
+      action = "<C-W>v";
+      options = {
+        silent = true;
+        desc = "Split window right";
+      };
+    }
 
-    # better command line editing
-    (mkKeymap "c" "<C-A>" "<Home>")
-    (mkKeymap "c" "<C-E>" "<End>")
+    {
+      mode = "n";
+      key = "<C-h>";
+      action = "<C-W>h";
+      options = {
+        silent = true;
+        desc = "Move to window left";
+      };
+    }
 
-    # easier buffer navigation
-    (mkKeymap "n" "<Tab>" ":bnext<CR>")
-    (mkKeymap "n" "<S-Tab>" ":bprevious<CR>")
+    {
+      mode = "n";
+      key = "<C-l>";
+      action = "<C-W>l";
+      options = {
+        silent = true;
+        desc = "Move to window right";
+      };
+    }
 
-    # swap functionality of gj and gk
-    (mkKeymap "n" "j" "gj")
-    (mkKeymap "n" "k" "gk")
-    (mkKeymap "n" "gj" "j")
-    (mkKeymap "n" "gk" "k")
+    {
+      mode = "n";
+      key = "<C-k>";
+      action = "<C-W>k";
+      options = {
+        silent = true;
+        desc = "Move to window over";
+      };
+    }
 
-    # TODO: incsearch?
+    {
+      mode = "n";
+      key = "<C-j>";
+      action = "<C-W>j";
+      options = {
+        silent = true;
+        desc = "Move to window bellow";
+      };
+    }
 
-    # better quickfix navigation
-    (mkKeymap "n" "<C-J>" ":cnext<CR>")
-    (mkKeymap "n" "<C-K>" ":cprevious<CR>")
+    {
+      mode = "n";
+      key = "<C-s>";
+      action = "<cmd>w<cr><esc>";
+      options = {
+        silent = true;
+        desc = "Save file";
+      };
+    }
 
-    # vim fugitive
-    (mkKeymap "n" "<leader>gs" ":G<CR>")
+    # Quit/Session
+    {
+      mode = "n";
+      key = "<leader>qq";
+      action = "<cmd>quitall<cr><esc>";
+      options = {
+        silent = true;
+        desc = "Quit all";
+      };
+    }
 
-    #error slove this
-    (mkKeymap "i" "<" "<")
+    {
+      mode = "n";
+      key = "<leader>ul";
+      action = ":lua ToggleLineNumber()<cr>";
+      options = {
+        silent = true;
+        desc = "Toggle Line Numbers";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>uL";
+      action = ":lua ToggleRelativeLineNumber()<cr>";
+      options = {
+        silent = true;
+        desc = "Toggle Relative Line Numbers";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>uw";
+      action = ":lua ToggleWrap()<cr>";
+      options = {
+        silent = true;
+        desc = "Toggle Line Wrap";
+      };
+    }
+
+    {
+      mode = "v";
+      key = "J";
+      action = ":m '>+1<CR>gv=gv";
+      options = { desc = "Use move command when line is highlighted "; };
+    }
+
+    {
+      mode = "v";
+      key = "K";
+      action = ":m '>-2<CR>gv=gv";
+      options = { desc = "Use move command when line is highlighted "; };
+    }
+
+    {
+      mode = "n";
+      key = "J";
+      action = "mzJ`z";
+      options = {
+        desc = "Allow cursor to stay in the same place after appending to current line ";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<C-d>";
+      action = "<C-d>zz";
+      options = {
+        desc = "Allow C-d and C-u to keep the cursor in the middle";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<C-u>";
+      action = "<C-u>zz";
+      options = {
+        desc = "Allow C-d and C-u to keep the cursor in the middle";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "n";
+      action = "nzzzv";
+      options = { desc = "Allow search terms to stay in the middle "; };
+    }
+
+    {
+      mode = "n";
+      key = "N";
+      action = "Nzzzv";
+      options = { desc = "Allow search terms to stay in the middle "; };
+    }
+
+    # Paste stuff without saving the deleted word into the buffer
+    {
+      mode = "x";
+      key = "<leader>p";
+      action = ''"_dP'';
+      options = { desc = "Deletes to void register and paste over"; };
+    }
+
+    # Copy stuff to system clipboard with <leader> + y or just y to have it just in vim
+    {
+      mode = [ "n" "v" ];
+      key = "<leader>y";
+      action = ''"+y'';
+      options = { desc = "Copy to system clipboard"; };
+    }
+
+    {
+      mode = [ "n" "v" ];
+      key = "<leader>Y";
+      action = ''"+Y'';
+      options = { desc = "Copy to system clipboard"; };
+    }
+
+    # Delete to void register
+    {
+      mode = [ "n" "v" ];
+      key = "<leader>D";
+      action = ''"_d'';
+      options = { desc = "Delete to void register"; };
+    }
+
+    # <C-c> instead of pressing esc just because
+    {
+      mode = "i";
+      key = "<C-c>";
+      action = "<Esc>";
+    }
+
+    {
+      mode = "n";
+      key = "<leader>m";
+      action = "<CMD> Grapple toggle <CR>";
+      options = { desc = "Grapple Toggle tag"; };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>k";
+      action = "<CMD> Grapple toggle_tags <CR>";
+      options = { desc = "Grapple Toggle tag"; };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>K";
+      action = "<CMD> Grapple toggle_scopes <CR>";
+      options = { desc = "Grapple Toggle scopes"; };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>j";
+      action = "<CMD> Grapple cycle forward <CR>";
+      options = { desc = "Grapple Cycle forward"; };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>J";
+      action = "<CMD> Grapple cycle backward <CR>";
+      options = { desc = "Grapple Cycle backward"; };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>1";
+      action = "<CMD> Grapple select index=1<CR>";
+      options = { desc = "Grapple Select 1"; };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>2";
+      action = "<CMD> Grapple select index=2<CR>";
+      options = { desc = "Grapple Select 2"; };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>3";
+      action = "<CMD> Grapple select index=3<CR>";
+      options = { desc = "Grapple Select 3"; };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>4";
+      action = "<CMD> Grapple select index=4<CR>";
+      options = { desc = "Grapple Select 4"; };
+    }
   ];
+  extraConfigLua = ''
+    function ToggleLineNumber()
+    if vim.wo.number then
+      vim.wo.number = false
+    else
+      vim.wo.number = true
+        vim.wo.relativenumber = false
+        end
+        end
+
+        function ToggleRelativeLineNumber()
+        if vim.wo.relativenumber then
+          vim.wo.relativenumber = false
+        else
+          vim.wo.relativenumber = true
+            vim.wo.number = false
+            end
+            end
+
+            function ToggleWrap()
+            vim.wo.wrap = not vim.wo.wrap
+            end
+  '';
 }

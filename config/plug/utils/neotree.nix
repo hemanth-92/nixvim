@@ -1,5 +1,4 @@
 {
-  programs.nixvim = {
     plugins.neo-tree = {
       enable = false;
       enableDiagnostics = true;
@@ -34,5 +33,4 @@
         };
       }
     ];
-  };
 }

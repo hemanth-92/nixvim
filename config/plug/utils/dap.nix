@@ -1,6 +1,5 @@
 {pkgs, ...}: 
 {
-  programs.nixvim = {
     plugins.dap = {
       enable = true;
       adapters = {};
@@ -48,5 +47,4 @@
         options.silent = true;
       }
     ];
-  };
 }
