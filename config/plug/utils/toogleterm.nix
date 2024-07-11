@@ -11,7 +11,7 @@
           end
         end
       '';
-      open_mapping = "[[<A-i>]]";
+      open_mapping = "[[<C-i>]]";
       hide_numbers = true;
       shade_terminals = true;
       start_in_insert = true;
@@ -19,7 +19,7 @@
       persist_mode = true;
       insert_mappings = true;
       close_on_exit = true;
-      shell = "zsh";
+      shell = "fish";
       direction = "horizontal"; # 'vertical' | 'horizontal' | 'window' | 'float'
       auto_scroll = true;
       float_opts = {
