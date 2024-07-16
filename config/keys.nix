@@ -1,5 +1,8 @@
 let
   bind = mode: key: action: { inherit mode key action; };
+  bindopts =
+    mode: key: action: opts:
+    (bind mode key action) // { options = opts; };
 
 in
 {
@@ -32,6 +35,14 @@ in
 
     # replace highlighted text when pasting
     (bind "v" "<C-V>" ''"+P'')
+
+    # automatically jump to end of text pasted
+    (bindopts "v" "y" "y`]" { silent = true; })
+    (bindopts "v" "p" "p`]" { silent = true; })
+    (bindopts "n" "p" "p`]" { silent = true; })
+
+    (bind "i" "jk" "<Esc>")
+    (bind "i" "kj" "<Esc>")
 
     # vim fugitive
     (bind "n" "<leader>gs" ":G<CR>")
