@@ -75,7 +75,7 @@ in
     (mkKeymapWithOpts "n" "j" "(v:count > 5 ? \"m'\" . v:count : \"\") . 'j'" { expr = true; })
 
     # vv enter visual block mode
-    (mkKeymap "n" "vv" "<C-V>")
+    (mkKeymap "n" "v" "<C-V>")
 
     # ; is an alias for :
     (mkKeymap "n" ";" ":")
