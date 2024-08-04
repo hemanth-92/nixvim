@@ -41,7 +41,7 @@ in
     (mkKeymap "i" "<C-V>" ''<C-O>"+P'')
 
     # replace highlighted text when pasting
-    (mkKeymap "v" "<C-V>" ''"+P'')
+    #(mkKeymap "v" "<C-V>" ''"+P'')
 
     # automatically jump to end of text pasted
     (mkKeymapWithOpts "v" "y" "y`]" { silent = true; })
