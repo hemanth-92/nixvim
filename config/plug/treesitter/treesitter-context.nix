@@ -1,3 +1,1 @@
-{
-    plugins.treesitter-context.enable = true;
-}
+{ plugins.treesitter-context.enable = true; }
