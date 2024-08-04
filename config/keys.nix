@@ -41,7 +41,7 @@ in
     (mkKeymap "i" "<C-V>" ''<C-O>"+P'')
 
     # replace highlighted text when pasting
-    #(mkKeymap "v" "<C-V>" ''"+P'')
+    (mkKeymap "v" "<C-V>" ''"+P'')
 
     # automatically jump to end of text pasted
     (mkKeymapWithOpts "v" "y" "y`]" { silent = true; })
@@ -75,7 +75,7 @@ in
     (mkKeymapWithOpts "n" "j" "(v:count > 5 ? \"m'\" . v:count : \"\") . 'j'" { expr = true; })
 
     # vv enter visual block mode
-    (mkKeymap "n" "v" "<C-V>")
+    (mkKeymap "n" "vv" "<C-V>")
 
     # ; is an alias for :
     (mkKeymap "n" ";" ":")
