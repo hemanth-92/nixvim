@@ -4,5 +4,6 @@
     nvim-ufo.enable = true;
     ts-autotag.enable = true;
     which-key.enable = true;
+    markdown-preview.enable = true;
   };
 }

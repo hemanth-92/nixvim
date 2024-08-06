@@ -102,5 +102,8 @@ in
 
     # vim fugitive
     (mkKeymap "n" "<leader>gs" ":G<CR>")
+
+    #Markdown Preview
+    (mkKeymap "n" "<leader>md" ":MarkdownPreviewToggle<cr>")
   ];
 }
