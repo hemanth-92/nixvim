@@ -1,0 +1,1 @@
+This is Nixvim config
