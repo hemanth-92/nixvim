@@ -15,6 +15,7 @@
         yamllint.enable = true;
       };
       formatting = {
+        nixpkgs_fmt.enable = true;
         black = {
           enable = true;
           settings = ''
@@ -23,6 +24,7 @@
             }
           '';
         };
+        prettierd.enable = true;
         prettier = {
           enable = true;
           disableTsServerFormatter = true;
