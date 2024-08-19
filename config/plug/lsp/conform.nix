@@ -16,42 +16,12 @@
         ]
       ];
       rust = [ "rustfmt" ];
-      html = [
-        [
-          "prettierd"
-          "prettier"
-        ]
-      ];
-      css = [
-        [
-          "prettierd"
-          "prettier"
-        ]
-      ];
-      javascript = [
-        [
-          "prettierd"
-          "prettier"
-        ]
-      ];
-      javascriptreact = [
-        [
-          "prettierd"
-          "prettier"
-        ]
-      ];
-      typescript = [
-        [
-          "prettierd"
-          "prettier"
-        ]
-      ];
-      typescriptreact = [
-        [
-          "prettierd"
-          "prettier"
-        ]
-      ];
+      html = [ [ "prettierd" ] ];
+      css = [ [ "prettierd" ] ];
+      javascript = [ [ "prettierd" ] ];
+      javascriptreact = [ [ "prettierd" ] ];
+      typescript = [ [ "prettierd" ] ];
+      typescriptreact = [ [ "prettierd" ] ];
     };
   };
 }
