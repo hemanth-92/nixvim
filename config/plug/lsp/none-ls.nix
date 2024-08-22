@@ -36,6 +36,8 @@
         };
         stylua.enable = true;
         yamlfmt.enable = true;
+        google_java_format.enable = true;
+        clang_format.enable = true;
       };
     };
   };

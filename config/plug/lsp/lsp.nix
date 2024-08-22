@@ -7,7 +7,7 @@
       enable = true;
       servers = {
         html.enable = true;
-        ccls.enable = true;
+        clangd.enable = true;
         cmake.enable = true;
         emmet-ls.enable = true;
         cssls.enable = true;

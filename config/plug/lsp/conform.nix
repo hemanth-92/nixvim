@@ -52,6 +52,8 @@
           "prettier"
         ]
       ];
+      java = [ "google-java-format" ];
+      clangd = [ " clang_format" ];
     };
   };
 }
