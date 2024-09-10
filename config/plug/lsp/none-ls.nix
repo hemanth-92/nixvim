@@ -38,6 +38,9 @@
         yamlfmt.enable = true;
         google_java_format.enable = true;
         clang_format.enable = true;
+        goimports_reviser.enable = true;
+        gofumpt.enable = true;
+        golines.enable = true;
       };
     };
   };
