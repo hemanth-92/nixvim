@@ -22,7 +22,7 @@
             diagnostic.suppress = [ "sema-escaping-with" ];
           };
         };
-        tsserver.enable = true;
+        ts-ls.enable = true;
         lua-ls.enable = true;
         bashls.enable = true;
         eslint.enable = true;
