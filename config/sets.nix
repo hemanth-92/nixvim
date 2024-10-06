@@ -31,16 +31,16 @@
     # Enable mouse mode
     mouse = "a"; # Mouse
 
-    # Enable ignorecase + smartcase for better searching
+    # Enable ignore case + smart case for better searching
     ignorecase = true;
     smartcase = true; # Don't ignore case with capitals
     grepprg = "rg --vimgrep";
     grepformat = "%f:%l:%c:%m";
 
-    # Decrease updatetime
+    # Decrease update time
     updatetime = 50; # faster completion (4000ms default)
 
-    # Set completeopt to have a better completion experience
+    # Set complete opt to have a better completion experience
     completeopt = [
       "menuone"
       "noselect"
@@ -62,7 +62,7 @@
     cursorline = true; # Highlight the line where the cursor is located
 
     # Set fold settings
-    # These options were reccommended by nvim-ufo
+    # These options were recommended by nvim-ufo
     # See: https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
     foldcolumn = "0";
     foldlevel = 99;
@@ -87,8 +87,5 @@
 
     # We don't need to see things like INSERT anymore
     showmode = false;
-
-    spelllang = "en_us";
-    spell = true;
   };
 }
