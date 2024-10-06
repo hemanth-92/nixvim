@@ -1,8 +1,5 @@
 {
   plugins = {
-    cmp-emoji = {
-      enable = true;
-    };
     cmp = {
       enable = true;
       settings = {
@@ -40,6 +37,8 @@
             name = "luasnip"; # snippets
             keywordLength = 3;
           }
+          { name = "nvim_lsp_document_symbol"; }
+          { name = "nvim_lsp_signature_help"; }
         ];
 
         window = {
@@ -79,6 +78,8 @@
     cmp-cmdline = {
       enable = false;
     }; # autocomplete for cmdline
+    cmp-nvim-lsp-document-symbol.enable = true;
+    cmp-nvim-lsp-signature-help.enable = true;
   };
   extraConfigLua = ''
           luasnip = require("luasnip")
