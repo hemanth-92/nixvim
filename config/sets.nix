@@ -87,5 +87,8 @@
 
     # We don't need to see things like INSERT anymore
     showmode = false;
+
+    spelllang = "en_us";
+    spell = true;
   };
 }
