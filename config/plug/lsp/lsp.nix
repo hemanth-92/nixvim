@@ -9,24 +9,24 @@
         html.enable = true;
         ccls.enable = true;
         cmake.enable = true;
-        emmet-ls.enable = true;
+        emmet_ls.enable = true;
         cssls.enable = true;
         gopls.enable = true;
         jsonls.enable = true;
         pyright.enable = true;
         tailwindcss.enable = true;
-        java-language-server.enable = true;
+        java_language_server.enable = true;
         nixd = {
           enable = true;
           settings = {
             diagnostic.suppress = [ "sema-escaping-with" ];
           };
         };
-        ts-ls.enable = true;
-        lua-ls.enable = true;
+        ts_ls.enable = true;
+        lua_ls.enable = true;
         bashls.enable = true;
         eslint.enable = true;
-        rust-analyzer = {
+        rust_analyzer = {
           enable = true;
           installCargo = false;
           installRustc = false;
