@@ -20,6 +20,15 @@
           enable = true;
           settings = {
             diagnostic.suppress = [ "sema-escaping-with" ];
+            nixpkgs.expr = "import <nixpkgs> { }";
+            options = {
+              nixos = {
+                expr = "(builtins.getFlake \"/home/zenith/hyprnix\").nixosConfigurations.shadowblaze.options";
+              };
+              home_manager = {
+                expr = "(builtins.getFlake \"/home/zenith/hyprnix\").homeConfigurations.shadowblaze.options";
+              };
+            };
           };
         };
         ts_ls.enable = true;
