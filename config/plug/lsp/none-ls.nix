@@ -24,8 +24,7 @@
             }
           '';
         };
-        prettierd.enable = true;
-        prettier = {
+        prettierd = {
           enable = true;
           disableTsServerFormatter = true;
           settings = ''
