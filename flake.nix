@@ -6,12 +6,11 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      nixvim,
-      flake-utils,
-      ...
+    { self
+    , nixpkgs
+    , nixvim
+    , flake-utils
+    , ...
     }@inputs:
     let
       config = import ./config; # import the module directly
