@@ -47,7 +47,7 @@
             in
             [
               (mkButton "f"
-                "<CMD>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true, file_ignore_patterns = { '^%.git/', '^%.cache/', '^%.DS_Store$', '^%.history$', '^%.venv/'} })<CR>"
+                "<CMD>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true, file_ignore_patterns = { '^%.git/', '^%.cache/', '^%.DS_Store$', '^%.history/', '^%.venv/','^%.direnv/'} })<CR>"
                 "🔍 Find File"
                 "Operator"
               )
