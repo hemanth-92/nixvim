@@ -1,32 +1,30 @@
 { pkgs, ... }:
 {
-  plugins.dap = {
-    enable = true;
-    adapters = { };
-    signs = {
-      dapBreakpoint = {
-        text = "●";
-        texthl = "DapBreakpoint";
-      };
-      dapBreakpointCondition = {
-        text = "●";
-        texthl = "DapBreakpointCondition";
-      };
-      dapLogPoint = {
-        text = "◆";
-        texthl = "DapLogPoint";
+  plugins = {
+    dap-virtual-text.enable = true;
+    dap-ui.enable = true;
+    dap-go = {
+      enable = true;
+      settings = {
+        lve.path = "${pkgs.delve}/bin/dlv";
       };
     };
-    extensions = {
-      dap-go = {
-        enable = true;
-        delve.path = "${pkgs.delve}/bin/dlv";
-      };
-      dap-ui = {
-        enable = true;
-      };
-      dap-virtual-text = {
-        enable = true;
+    dap = {
+      enable = true;
+      adapters = { };
+      signs = {
+        dapBreakpoint = {
+          text = "●";
+          texthl = "DapBreakpoint";
+        };
+        dapBreakpointCondition = {
+          text = "●";
+          texthl = "DapBreakpointCondition";
+        };
+        dapLogPoint = {
+          text = "◆";
+          texthl = "DapLogPoint";
+        };
       };
     };
   };

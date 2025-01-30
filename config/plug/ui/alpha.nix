@@ -46,7 +46,9 @@
               };
             in
             [
-              (mkButton "f" "<CMD>lua require('telescope.builtin').find_files({hidden = true})<CR>" "🔍 Find File"
+              (mkButton "f"
+                "<CMD>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true, file_ignore_patterns = { '^%.git/', '^%.cache/', '^%.DS_Store$' } })<CR>"
+                "🔍 Find File"
                 "Operator"
               )
               (mkButton "q" "<CMD>qa<CR>" "💣 Quit Nixvim" "String")
