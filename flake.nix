@@ -45,7 +45,7 @@
           default = nvim;
         };
 
-        formatter = pkgs.nixpkgs-rfc-style;
+        formatter = pkgs.nixfmt;
       }
     );
 }
